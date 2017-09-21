@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>拖拽测试</title>
+</head>
+<body>
+  <div class = "move-container" style="position:absolute; width: 300px; height: 200px; background: lightgreen;">
+      <div class = "move" style="width: 100%; height: 45px; background: gray"></div>
+  </div> 
+  <script type="text/javascript">
+    var moveElem = document.querySelector('.move'); //待拖拽元素      
+    var move_container = document.querySelector('.move-container');
+    var dragging; //是否激活拖拽状态
+    var tLeft, tTop; //鼠标按下时相对于选中元素的位移
+    //监听鼠标按下事件
+    moveElem.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        dragging = true; //激活拖拽状态
+        var moveElemRect = moveElem.getBoundingClientRect();
+        tLeft = e.clientX - moveElemRect.left; //鼠标按下时和选中元素的坐标偏移:x坐标
+        tTop = e.clientY - moveElemRect.top; //鼠标按下时和选中元素的坐标偏移:y坐标
+    });
+
+    //监听鼠标放开事件
+    document.addEventListener('mouseup', function(e) {
+      dragging = false;
+    });
+
+    //监听鼠标移动事件
+    document.addEventListener('mousemove', function(e) {
+      if (dragging) {
+        var moveX = e.clientX - tLeft,
+          moveY = e.clientY - tTop;
+        move_container.style.left = (moveX < 0 ? 0 : moveX) + 'px'; // 碰撞检测
+        move_container.style.top = (moveY < 0 ? 0 : moveY) + 'px';  // 碰撞检测
+      }
+    });
+  </script>
+</body>
+</html>
