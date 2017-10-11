@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>srcset 和 sizes</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <img src="./image/large.jpg" 
+      srcset="./image/small.jpg 487w, ./image/medium.jpg 690w, ./image/large.jpg 900w"
+      sizes="(min-width: 900px) 900px, 100vw" alt="">
+  <!-- 通常来说srcset和sizes都是连在一起用的，只设置srcset不设置sizes就会默认设置sizes="100vw" -->
+</body>
+</html>

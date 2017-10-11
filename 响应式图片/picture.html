@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>picture</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- picture标签可以设置多个媒体查询对应的srcset 浏览器会一步一步的查询匹配的source -->
+  <picture>
+    <source media="(max-width: 690px)" srcset="./image/medium.jpg 690w">
+    <source media="orientation: landscape" srcset="./image/small.jpg 487w">
+    <source srcset="./image/large.jpg 900w">
+    <img src="./image/large.jpg" alt="">
+  </picture>
+</body>
+</html>

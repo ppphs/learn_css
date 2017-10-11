@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js控制和服务端控制</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <img src="./image/large.jpg" width="100%" height="auto" alt="">
+  <script>
+    /* 一、js控制和服务端控制（服务端控制是利用cookie把设备的宽高发送给服务器然后由服务器返回对应的图片） */
+    // 优点：兼容性好
+
+    function addImgaeSrc () {
+      let img = document.querySelector('img')
+      let width = document.documentElement.clientWidth // 可视宽度
+      if (width <= 487) {
+        img.setAttribute('src', './image/small.jpg')
+        img.style.height = width * 1.232 + 'px' // 为了比例协调
+      } else if (width <= 690) {
+        img.setAttribute('src', './image/medium.jpg')
+        img.style.height = width / 1.334 + 'px'
+      } else {
+        img.style.height = width / 1.55 + 'px'
+      }
+    }
+    window.onload = function () {
+      window.addEventListener('resize', addImgaeSrc, false)
+      window.addEventListener('load', addImgaeSrc, false)
+    }
+  </script>
+</body>
+</html>
